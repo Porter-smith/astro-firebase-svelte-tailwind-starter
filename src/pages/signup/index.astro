@@ -1,0 +1,16 @@
+---
+import SignupForm from "@/components/SignupForm.svelte";
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "../../components/Navbar.svelte";
+import getUserData from "../../firebase/utils/auth/getUserData";
+const title = "Sign Up - Astro Starter Pack";
+const description =
+  "Join Astro Starter Pack today and start enjoying all the benefits of our member-exclusive features and content.";
+const sessionCookie = Astro.cookies.get("session")?.value ?? null;
+const user = await getUserData(sessionCookie);
+---
+
+<Layout title={title} description={description}>
+  <Navbar {user} client:load />
+  <SignupForm client:load />
+</Layout>

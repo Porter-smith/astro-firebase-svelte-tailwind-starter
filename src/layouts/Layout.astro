@@ -1,0 +1,29 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@/css/global.css";
+// Define your Props interface with both `title` and `description`
+interface Props {
+  title: string;
+  description: string;
+}
+
+// Extract props from Astro.props
+const { title, description } = Astro.props as Props;
+---
+
+<html lang="en" transition:animate="none">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- Add the meta description tag below -->
+    <meta name="description" content={description} />
+    <!-- Enable SPA mode -->
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

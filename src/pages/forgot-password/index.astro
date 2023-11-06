@@ -1,0 +1,19 @@
+---
+import ForgetPasswordForm from "@/components/ForgetPasswordForm.svelte";
+import Layout from "@/layouts/Layout.astro";
+import getUserData from "../../firebase/utils/auth/getUserData";
+import Navbar from "../../components/Navbar.svelte";
+const title = "Forgot Password - Astro Starter Pack";
+const description = "Reset your password to regain access to your account.";
+
+const sessionCookie = Astro.cookies.get("session")?.value ?? null;
+const user = await getUserData(sessionCookie);
+if (user) {
+  return Astro.redirect("/dashboard");
+}
+---
+
+<Layout title={title} description={description}>
+  <Navbar {user} client:load />
+  <ForgetPasswordForm client:load />
+</Layout>

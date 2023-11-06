@@ -1,0 +1,20 @@
+---
+import ConfirmPasswordForm from "@/components/ConfirmPasswordForm.svelte";
+import Layout from "@/layouts/Layout.astro";
+import getUserData from "@/firebase/utils/auth/getUserData";
+import Navbar from "@/components/Navbar.svelte";
+const title = "Confirm Password - Astro Starter Pack";
+const description = "Reset your password to regain access to your account.";
+
+const sessionCookie = Astro.cookies.get("session")?.value ?? null;
+const user = await getUserData(sessionCookie);
+if (user) {
+  return Astro.redirect("/dashboard");
+}
+const oobCode = Astro.url.searchParams.get("oobCode")! || "";
+---
+
+<Layout title={title} description={description}>
+  <Navbar {user} client:load />
+  <ConfirmPasswordForm {oobCode} client:load />
+</Layout>

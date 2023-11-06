@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Dashboard from "../../components/Dashboard.svelte";
+import Navbar from "../../components/Navbar.svelte";
+import getUserData from "../../firebase/utils/auth/getUserData";
+
+/* Check current session */
+const sessionCookie = Astro.cookies.get("session")?.value ?? null;
+
+const user = await getUserData(sessionCookie);
+
+if (!user) {
+  return Astro.redirect("/signin");
+}
+
+const title = "Dashboard - Astro Starter Pack";
+const description = "Dashboard page to view and manage firebase data";
+---
+
+<Layout {description} {title}>
+  <Navbar {user} client:load />
+  <Dashboard {user} client:load />
+</Layout>

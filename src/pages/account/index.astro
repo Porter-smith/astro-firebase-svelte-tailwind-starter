@@ -1,0 +1,22 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "../../components/Navbar.svelte";
+import getUserData from "../../firebase/utils/auth/getUserData";
+import EditAccountForm from "../../components/EditAccountForm.svelte";
+
+/* Check current session */
+const sessionCookie = Astro.cookies.get("session")?.value ?? null;
+
+const user = await getUserData(sessionCookie);
+
+if (!user) {
+  return Astro.redirect("/signin");
+}
+const title = "Account - Astro Starter Pack";
+const description = "Account page to manage account settings";
+---
+
+<Layout {description} {title}>
+  <Navbar {user} client:load />
+  <EditAccountForm {user} client:load />
+</Layout>
