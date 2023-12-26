@@ -1,4 +1,4 @@
-<a href="https://astro-firebase-svelte-tailwind-starter.vercel.app/">
+<a href="https://astro-firebase-svelte-starter.vercel.app/">
 <img alt="Screenshot of the Astro Firebase Svelte Tailwind starter's Banner showing a clean and responsive design sign in and a perfect google lighthouse scores with 100% in Performance, Accessibility, Best Practices, and SEO" src="./.github/assets/firebase-starter-banner.png">
 </a>
 <h1 align="center">Astro Firebase Starter</h1>
@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://astro-firebase-svelte-tailwind-starter.vercel.app/"><strong>Try me!</strong></a>
+  <a href="https://astro-firebase-svelte-starter.vercel.app/"><strong>Try me!</strong></a>
 </p>
 
 ## Getting Started
